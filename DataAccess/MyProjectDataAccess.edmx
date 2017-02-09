@@ -1,0 +1,2510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ArcRelationshipGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableDrivedEntityID" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="ArcRelationshipGroup_Relationship">
+          <Key>
+            <PropertyRef Name="RelationshipID" />
+            <PropertyRef Name="ArcRelationshipGroupID" />
+          </Key>
+          <Property Name="RelationshipID" Type="int" Nullable="false" />
+          <Property Name="ArcRelationshipGroupID" Type="int" Nullable="false" />
+          <Property Name="Dummy2" Type="bit" />
+          <Property Name="Dummy" Type="bit" />
+        </EntityType>
+        <EntityType Name="Column">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Value" Type="varchar" MaxLength="4000" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="PrimaryKey" Type="bit" Nullable="false" />
+          <Property Name="IsIdentity" Type="bit" Nullable="false" />
+          <Property Name="IsNull" Type="bit" Nullable="false" />
+          <Property Name="IsMandatory" Type="bit" Nullable="false" />
+          <Property Name="DefaultValue" Type="varchar" MaxLength="4000" />
+          <Property Name="DataType" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Position" Type="int" />
+          <Property Name="Alias" Type="varchar" MaxLength="128" />
+          <Property Name="DataEntryEnabled" Type="bit" Nullable="false" />
+          <Property Name="SearchEnabled" Type="bit" />
+          <Property Name="ViewEnabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="Column_Tag">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+          <Property Name="TagID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="ColumnKeyValue">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+          <Property Name="ValueFromKeyOrValue" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ColumnKeyValueRange">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+          <Property Name="KeyTitle" Type="varchar" MaxLength="4000" />
+          <Property Name="Value" Type="int" />
+        </EntityType>
+        <EntityType Name="DatabaseInformation">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ConnectionString" Type="varchar" MaxLength="1024" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DateColumnType">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+          <Property Name="IsPersianDate" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entity_Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+            <PropertyRef Name="TableDrivedEntityID" />
+          </Key>
+          <Property Name="TagID" Type="int" Nullable="false" />
+          <Property Name="TableDrivedEntityID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="ExplicitOneToOneRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ImplicitOneToOneRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ISARelationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" />
+          <Property Name="IsGeneralization" Type="bit" />
+          <Property Name="IsSpecialization" Type="bit" />
+          <Property Name="IsTolatParticipation" Type="bit" Nullable="false" />
+          <Property Name="IsDisjoint" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManyToManyRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="ManyToOneRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ManyToManyRelationshipTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="NumericColumnType">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+          <Property Name="Precision" Type="int" />
+          <Property Name="Scale" Type="int" />
+          <Property Name="MinValue" Type="int" />
+          <Property Name="MaxValue" Type="int" />
+        </EntityType>
+        <EntityType Name="OneToManyRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="MasterDetailState" Type="smallint" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ManySideCount" Type="int" />
+        </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RelationshipID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="128" />
+          <Property Name="DataEntryEnabled" Type="bit" />
+          <Property Name="SearchEnabled" Type="bit" />
+          <Property Name="ViewEnabled" Type="bit" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="FirstSideTableID" Type="int" Nullable="false" />
+          <Property Name="SecondSideTableID" Type="int" Nullable="false" />
+          <Property Name="TableDrivedEntityID1" Type="int" Nullable="false" />
+          <Property Name="TableDrivedEntityID2" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelationshipColumns">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RelationshipID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RelationshipID" Type="int" Nullable="false" />
+          <Property Name="FirstSideColumnID" Type="int" Nullable="false" />
+          <Property Name="SecondSideColumnID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IsOtherSideMandatory" Type="bit" Nullable="false" />
+          <Property Name="IsOtherSideTransferable" Type="bit" />
+          <Property Name="IsOtherSideCreatable" Type="bit" Nullable="false" />
+          <Property Name="IsOtherSideDirectlyCreatable" Type="bit" />
+        </EntityType>
+        <EntityType Name="RuleOnValue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RuleOnValue_Column">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+            <PropertyRef Name="RuleOnValueID" />
+          </Key>
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+          <Property Name="RuleOnValueID" Type="int" Nullable="false" />
+          <Property Name="ValidValue" Type="varchar" MaxLength="512" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RuleOnValue_Relationship">
+          <Key>
+            <PropertyRef Name="RelationshipID" />
+            <PropertyRef Name="RuleOnValueID" />
+          </Key>
+          <Property Name="RelationshipID" Type="int" Nullable="false" />
+          <Property Name="RuleOnValueID" Type="int" Nullable="false" />
+          <Property Name="Enabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="StringColumnType">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+          <Property Name="MaxLength" Type="int" Nullable="false" />
+          <Property Name="Format" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="SubToSuperRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ISARelationshipID" Type="int" Nullable="false" />
+          <Property Name="Dummy" Type="bit" />
+        </EntityType>
+        <EntityType Name="SubUnionToUnionRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UnionRelationshipTypeID" Type="int" Nullable="false" />
+          <Property Name="Dummy" Type="bit" />
+        </EntityType>
+        <EntityType Name="SuperToSubRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ISARelationshipID" Type="int" Nullable="false" />
+          <Property Name="Dummy" Type="bit" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="RelatedSchema" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Catalog" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="128" />
+          <Property Name="BatchDataEntry" Type="bit" />
+          <Property Name="IsDataReference" Type="bit" />
+          <Property Name="IsStructurReferencee" Type="bit" />
+          <Property Name="IsAssociative" Type="bit" />
+          <Property Name="IsInheritanceImplementation" Type="bit" />
+        </EntityType>
+        <EntityType Name="TableDrivedEntity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="128" />
+          <Property Name="Criteria" Type="varchar" MaxLength="400" />
+          <Property Name="IndependentDataEntry" Type="bit" />
+          <Property Name="BatchDataEntry" Type="bit" />
+          <Property Name="IsDataReference" Type="bit" />
+          <Property Name="IsStructurReferencee" Type="bit" />
+          <Property Name="IsAssociative" Type="bit" />
+        </EntityType>
+        <EntityType Name="TableDrivedEntity_Columns">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+            <PropertyRef Name="TableDrivedEntityID" />
+          </Key>
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+          <Property Name="TableDrivedEntityID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" />
+          <Property Name="Category" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="UnionRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" />
+          <Property Name="IsTolatParticipation" Type="bit" Nullable="false" />
+          <Property Name="UnionHoldsKeys" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnionToSubUnionRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UnionRelationshipTypeID" Type="int" Nullable="false" />
+          <Property Name="Dummy" Type="bit" />
+        </EntityType>
+        <EntityType Name="UniqueConstraint">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UniqueConstraint_Column">
+          <Key>
+            <PropertyRef Name="UniqueConstraintID" />
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="UniqueConstraintID" Type="int" Nullable="false" />
+          <Property Name="ColumnID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FKArcRelatio150451">
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="1" />
+          <End Role="ArcRelationshipGroup_Relationship" Type="Self.ArcRelationshipGroup_Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ArcRelationshipGroup_Relationship">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKArcRelatio252133">
+          <End Role="ArcRelationshipGroup" Type="Self.ArcRelationshipGroup" Multiplicity="1" />
+          <End Role="ArcRelationshipGroup_Relationship" Type="Self.ArcRelationshipGroup_Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArcRelationshipGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ArcRelationshipGroup_Relationship">
+              <PropertyRef Name="ArcRelationshipGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKArcRelatio319969">
+          <End Role="TableDrivedEntity" Type="Self.TableDrivedEntity" Multiplicity="1" />
+          <End Role="ArcRelationshipGroup" Type="Self.ArcRelationshipGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableDrivedEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ArcRelationshipGroup">
+              <PropertyRef Name="TableDrivedEntityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumn_Tag50308">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="Column_Tag" Type="Self.Column_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Column_Tag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumn_Tag522204">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="Column_Tag" Type="Self.Column_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Column_Tag">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumn659222">
+          <End Role="Table" Type="Self.Table" Multiplicity="1" />
+          <End Role="Column" Type="Self.Column" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Column">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumnKeyV918647">
+          <End Role="ColumnKeyValue" Type="Self.ColumnKeyValue" Multiplicity="1" />
+          <End Role="ColumnKeyValueRange" Type="Self.ColumnKeyValueRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ColumnKeyValue">
+              <PropertyRef Name="ColumnID" />
+            </Principal>
+            <Dependent Role="ColumnKeyValueRange">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumnKeyV956181">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="ColumnKeyValue" Type="Self.ColumnKeyValue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ColumnKeyValue">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKDateColumn74546">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="DateColumnType" Type="Self.DateColumnType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DateColumnType">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEntity_Tag411767">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="Entity_Tag" Type="Self.Entity_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Entity_Tag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEntity_Tag496649">
+          <End Role="TableDrivedEntity" Type="Self.TableDrivedEntity" Multiplicity="1" />
+          <End Role="Entity_Tag" Type="Self.Entity_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableDrivedEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Entity_Tag">
+              <PropertyRef Name="TableDrivedEntityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKExplicitOn408720">
+          <End Role="RelationshipType" Type="Self.RelationshipType" Multiplicity="1" />
+          <End Role="ExplicitOneToOneRelationshipType" Type="Self.ExplicitOneToOneRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExplicitOneToOneRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKImplicitOn720517">
+          <End Role="RelationshipType" Type="Self.RelationshipType" Multiplicity="1" />
+          <End Role="ImplicitOneToOneRelationshipType" Type="Self.ImplicitOneToOneRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImplicitOneToOneRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKManyToOneR336195">
+          <End Role="RelationshipType" Type="Self.RelationshipType" Multiplicity="1" />
+          <End Role="ManyToOneRelationshipType" Type="Self.ManyToOneRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ManyToOneRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKManyToOneR998042">
+          <End Role="ManyToManyRelationshipType" Type="Self.ManyToManyRelationshipType" Multiplicity="0..1" />
+          <End Role="ManyToOneRelationshipType" Type="Self.ManyToOneRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManyToManyRelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ManyToOneRelationshipType">
+              <PropertyRef Name="ManyToManyRelationshipTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNumericCol878005">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="NumericColumnType" Type="Self.NumericColumnType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NumericColumnType">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKOneToManyR245498">
+          <End Role="RelationshipType" Type="Self.RelationshipType" Multiplicity="1" />
+          <End Role="OneToManyRelationshipType" Type="Self.OneToManyRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OneToManyRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh250123">
+          <End Role="TableDrivedEntity" Type="Self.TableDrivedEntity" Multiplicity="1" />
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableDrivedEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Relationship">
+              <PropertyRef Name="TableDrivedEntityID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh250124">
+          <End Role="TableDrivedEntity" Type="Self.TableDrivedEntity" Multiplicity="1" />
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableDrivedEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Relationship">
+              <PropertyRef Name="TableDrivedEntityID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh639988">
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="0..1" />
+          <End Role="Relationship1" Type="Self.Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Relationship1">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh685437">
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="1" />
+          <End Role="RelationshipColumns" Type="Self.RelationshipColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationshipColumns">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh827735">
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="1" />
+          <End Role="RelationshipType" Type="Self.RelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu232166">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="RuleOnValue_Column" Type="Self.RuleOnValue_Column" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue_Column">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu430106">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="RuleOnValue" Type="Self.RuleOnValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu624839">
+          <End Role="RuleOnValue" Type="Self.RuleOnValue" Multiplicity="1" />
+          <End Role="RuleOnValue_Relationship" Type="Self.RuleOnValue_Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RuleOnValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue_Relationship">
+              <PropertyRef Name="RuleOnValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu865040">
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="1" />
+          <End Role="RuleOnValue_Relationship" Type="Self.RuleOnValue_Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue_Relationship">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu925452">
+          <End Role="RuleOnValue" Type="Self.RuleOnValue" Multiplicity="1" />
+          <End Role="RuleOnValue_Column" Type="Self.RuleOnValue_Column" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RuleOnValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue_Column">
+              <PropertyRef Name="RuleOnValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKStringColu936883">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="StringColumnType" Type="Self.StringColumnType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StringColumnType">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSubToSuper672991">
+          <End Role="RelationshipType" Type="Self.RelationshipType" Multiplicity="1" />
+          <End Role="SubToSuperRelationshipType" Type="Self.SubToSuperRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubToSuperRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSubToSuper88193">
+          <End Role="ISARelationship" Type="Self.ISARelationship" Multiplicity="1" />
+          <End Role="SubToSuperRelationshipType" Type="Self.SubToSuperRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ISARelationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubToSuperRelationshipType">
+              <PropertyRef Name="ISARelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSubUnionTo235113">
+          <End Role="UnionRelationshipType" Type="Self.UnionRelationshipType" Multiplicity="1" />
+          <End Role="SubUnionToUnionRelationshipType" Type="Self.SubUnionToUnionRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionRelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubUnionToUnionRelationshipType">
+              <PropertyRef Name="UnionRelationshipTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSubUnionTo818068">
+          <End Role="RelationshipType" Type="Self.RelationshipType" Multiplicity="1" />
+          <End Role="SubUnionToUnionRelationshipType" Type="Self.SubUnionToUnionRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubUnionToUnionRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSuperToSub305547">
+          <End Role="RelationshipType" Type="Self.RelationshipType" Multiplicity="1" />
+          <End Role="SuperToSubRelationshipType" Type="Self.SuperToSubRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SuperToSubRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSuperToSub515953">
+          <End Role="ISARelationship" Type="Self.ISARelationship" Multiplicity="1" />
+          <End Role="SuperToSubRelationshipType" Type="Self.SuperToSubRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ISARelationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SuperToSubRelationshipType">
+              <PropertyRef Name="ISARelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTableDrive108467">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="TableDrivedEntity_Columns" Type="Self.TableDrivedEntity_Columns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TableDrivedEntity_Columns">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTableDrive311898">
+          <End Role="Table" Type="Self.Table" Multiplicity="1" />
+          <End Role="TableDrivedEntity" Type="Self.TableDrivedEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TableDrivedEntity">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTableDrive379163">
+          <End Role="TableDrivedEntity" Type="Self.TableDrivedEntity" Multiplicity="1" />
+          <End Role="TableDrivedEntity_Columns" Type="Self.TableDrivedEntity_Columns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableDrivedEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TableDrivedEntity_Columns">
+              <PropertyRef Name="TableDrivedEntityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUnionToSub14902">
+          <End Role="RelationshipType" Type="Self.RelationshipType" Multiplicity="1" />
+          <End Role="UnionToSubUnionRelationshipType" Type="Self.UnionToSubUnionRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnionToSubUnionRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUnionToSub933310">
+          <End Role="UnionRelationshipType" Type="Self.UnionRelationshipType" Multiplicity="1" />
+          <End Role="UnionToSubUnionRelationshipType" Type="Self.UnionToSubUnionRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionRelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnionToSubUnionRelationshipType">
+              <PropertyRef Name="UnionRelationshipTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUniqueCons110156">
+          <End Role="Table" Type="Self.Table" Multiplicity="1" />
+          <End Role="UniqueConstraint" Type="Self.UniqueConstraint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UniqueConstraint">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUniqueCons500778">
+          <End Role="UniqueConstraint" Type="Self.UniqueConstraint" Multiplicity="1" />
+          <End Role="UniqueConstraint_Column" Type="Self.UniqueConstraint_Column" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueConstraint">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UniqueConstraint_Column">
+              <PropertyRef Name="UniqueConstraintID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUniqueCons999513">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="UniqueConstraint_Column" Type="Self.UniqueConstraint_Column" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UniqueConstraint_Column">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship_FirstEntityColumns">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="RelationshipColumns" Type="Self.RelationshipColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationshipColumns">
+              <PropertyRef Name="FirstSideColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship_SecondEntityColumns">
+          <End Role="Column" Type="Self.Column" Multiplicity="1" />
+          <End Role="RelationshipColumns" Type="Self.RelationshipColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationshipColumns">
+              <PropertyRef Name="SecondSideColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyProjectModelStoreContainer">
+          <EntitySet Name="ArcRelationshipGroup" EntityType="Self.ArcRelationshipGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArcRelationshipGroup_Relationship" EntityType="Self.ArcRelationshipGroup_Relationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Column" EntityType="Self.Column" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Column_Tag" EntityType="Self.Column_Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ColumnKeyValue" EntityType="Self.ColumnKeyValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ColumnKeyValueRange" EntityType="Self.ColumnKeyValueRange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabaseInformation" EntityType="Self.DatabaseInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DateColumnType" EntityType="Self.DateColumnType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entity_Tag" EntityType="Self.Entity_Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExplicitOneToOneRelationshipType" EntityType="Self.ExplicitOneToOneRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImplicitOneToOneRelationshipType" EntityType="Self.ImplicitOneToOneRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ISARelationship" EntityType="Self.ISARelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManyToManyRelationshipType" EntityType="Self.ManyToManyRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManyToOneRelationshipType" EntityType="Self.ManyToOneRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NumericColumnType" EntityType="Self.NumericColumnType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OneToManyRelationshipType" EntityType="Self.OneToManyRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Relationship" EntityType="Self.Relationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelationshipColumns" EntityType="Self.RelationshipColumns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelationshipType" EntityType="Self.RelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RuleOnValue" EntityType="Self.RuleOnValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RuleOnValue_Column" EntityType="Self.RuleOnValue_Column" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RuleOnValue_Relationship" EntityType="Self.RuleOnValue_Relationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StringColumnType" EntityType="Self.StringColumnType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubToSuperRelationshipType" EntityType="Self.SubToSuperRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubUnionToUnionRelationshipType" EntityType="Self.SubUnionToUnionRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SuperToSubRelationshipType" EntityType="Self.SuperToSubRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableDrivedEntity" EntityType="Self.TableDrivedEntity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableDrivedEntity_Columns" EntityType="Self.TableDrivedEntity_Columns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnionRelationshipType" EntityType="Self.UnionRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnionToSubUnionRelationshipType" EntityType="Self.UnionToSubUnionRelationshipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UniqueConstraint" EntityType="Self.UniqueConstraint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UniqueConstraint_Column" EntityType="Self.UniqueConstraint_Column" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FKArcRelatio150451" Association="Self.FKArcRelatio150451">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="ArcRelationshipGroup_Relationship" EntitySet="ArcRelationshipGroup_Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKArcRelatio252133" Association="Self.FKArcRelatio252133">
+            <End Role="ArcRelationshipGroup" EntitySet="ArcRelationshipGroup" />
+            <End Role="ArcRelationshipGroup_Relationship" EntitySet="ArcRelationshipGroup_Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKArcRelatio319969" Association="Self.FKArcRelatio319969">
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+            <End Role="ArcRelationshipGroup" EntitySet="ArcRelationshipGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumn_Tag50308" Association="Self.FKColumn_Tag50308">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="Column_Tag" EntitySet="Column_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumn_Tag522204" Association="Self.FKColumn_Tag522204">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="Column_Tag" EntitySet="Column_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumn659222" Association="Self.FKColumn659222">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="Column" EntitySet="Column" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumnKeyV918647" Association="Self.FKColumnKeyV918647">
+            <End Role="ColumnKeyValue" EntitySet="ColumnKeyValue" />
+            <End Role="ColumnKeyValueRange" EntitySet="ColumnKeyValueRange" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumnKeyV956181" Association="Self.FKColumnKeyV956181">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="ColumnKeyValue" EntitySet="ColumnKeyValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKDateColumn74546" Association="Self.FKDateColumn74546">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="DateColumnType" EntitySet="DateColumnType" />
+          </AssociationSet>
+          <AssociationSet Name="FKEntity_Tag411767" Association="Self.FKEntity_Tag411767">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="Entity_Tag" EntitySet="Entity_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FKEntity_Tag496649" Association="Self.FKEntity_Tag496649">
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+            <End Role="Entity_Tag" EntitySet="Entity_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FKExplicitOn408720" Association="Self.FKExplicitOn408720">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="ExplicitOneToOneRelationshipType" EntitySet="ExplicitOneToOneRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKImplicitOn720517" Association="Self.FKImplicitOn720517">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="ImplicitOneToOneRelationshipType" EntitySet="ImplicitOneToOneRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKManyToOneR336195" Association="Self.FKManyToOneR336195">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="ManyToOneRelationshipType" EntitySet="ManyToOneRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKManyToOneR998042" Association="Self.FKManyToOneR998042">
+            <End Role="ManyToManyRelationshipType" EntitySet="ManyToManyRelationshipType" />
+            <End Role="ManyToOneRelationshipType" EntitySet="ManyToOneRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKNumericCol878005" Association="Self.FKNumericCol878005">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="NumericColumnType" EntitySet="NumericColumnType" />
+          </AssociationSet>
+          <AssociationSet Name="FKOneToManyR245498" Association="Self.FKOneToManyR245498">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="OneToManyRelationshipType" EntitySet="OneToManyRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh250123" Association="Self.FKRelationsh250123">
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+            <End Role="Relationship" EntitySet="Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh250124" Association="Self.FKRelationsh250124">
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+            <End Role="Relationship" EntitySet="Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh639988" Association="Self.FKRelationsh639988">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="Relationship1" EntitySet="Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh685437" Association="Self.FKRelationsh685437">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="RelationshipColumns" EntitySet="RelationshipColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh827735" Association="Self.FKRelationsh827735">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu232166" Association="Self.FKRuleOnValu232166">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="RuleOnValue_Column" EntitySet="RuleOnValue_Column" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu430106" Association="Self.FKRuleOnValu430106">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="RuleOnValue" EntitySet="RuleOnValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu624839" Association="Self.FKRuleOnValu624839">
+            <End Role="RuleOnValue" EntitySet="RuleOnValue" />
+            <End Role="RuleOnValue_Relationship" EntitySet="RuleOnValue_Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu865040" Association="Self.FKRuleOnValu865040">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="RuleOnValue_Relationship" EntitySet="RuleOnValue_Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu925452" Association="Self.FKRuleOnValu925452">
+            <End Role="RuleOnValue" EntitySet="RuleOnValue" />
+            <End Role="RuleOnValue_Column" EntitySet="RuleOnValue_Column" />
+          </AssociationSet>
+          <AssociationSet Name="FKStringColu936883" Association="Self.FKStringColu936883">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="StringColumnType" EntitySet="StringColumnType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSubToSuper672991" Association="Self.FKSubToSuper672991">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="SubToSuperRelationshipType" EntitySet="SubToSuperRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSubToSuper88193" Association="Self.FKSubToSuper88193">
+            <End Role="ISARelationship" EntitySet="ISARelationship" />
+            <End Role="SubToSuperRelationshipType" EntitySet="SubToSuperRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSubUnionTo235113" Association="Self.FKSubUnionTo235113">
+            <End Role="UnionRelationshipType" EntitySet="UnionRelationshipType" />
+            <End Role="SubUnionToUnionRelationshipType" EntitySet="SubUnionToUnionRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSubUnionTo818068" Association="Self.FKSubUnionTo818068">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="SubUnionToUnionRelationshipType" EntitySet="SubUnionToUnionRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSuperToSub305547" Association="Self.FKSuperToSub305547">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="SuperToSubRelationshipType" EntitySet="SuperToSubRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSuperToSub515953" Association="Self.FKSuperToSub515953">
+            <End Role="ISARelationship" EntitySet="ISARelationship" />
+            <End Role="SuperToSubRelationshipType" EntitySet="SuperToSubRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKTableDrive108467" Association="Self.FKTableDrive108467">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="TableDrivedEntity_Columns" EntitySet="TableDrivedEntity_Columns" />
+          </AssociationSet>
+          <AssociationSet Name="FKTableDrive311898" Association="Self.FKTableDrive311898">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+          </AssociationSet>
+          <AssociationSet Name="FKTableDrive379163" Association="Self.FKTableDrive379163">
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+            <End Role="TableDrivedEntity_Columns" EntitySet="TableDrivedEntity_Columns" />
+          </AssociationSet>
+          <AssociationSet Name="FKUnionToSub14902" Association="Self.FKUnionToSub14902">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="UnionToSubUnionRelationshipType" EntitySet="UnionToSubUnionRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKUnionToSub933310" Association="Self.FKUnionToSub933310">
+            <End Role="UnionRelationshipType" EntitySet="UnionRelationshipType" />
+            <End Role="UnionToSubUnionRelationshipType" EntitySet="UnionToSubUnionRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKUniqueCons110156" Association="Self.FKUniqueCons110156">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="UniqueConstraint" EntitySet="UniqueConstraint" />
+          </AssociationSet>
+          <AssociationSet Name="FKUniqueCons500778" Association="Self.FKUniqueCons500778">
+            <End Role="UniqueConstraint" EntitySet="UniqueConstraint" />
+            <End Role="UniqueConstraint_Column" EntitySet="UniqueConstraint_Column" />
+          </AssociationSet>
+          <AssociationSet Name="FKUniqueCons999513" Association="Self.FKUniqueCons999513">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="UniqueConstraint_Column" EntitySet="UniqueConstraint_Column" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship_FirstEntityColumns" Association="Self.Relationship_FirstEntityColumns">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="RelationshipColumns" EntitySet="RelationshipColumns" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship_SecondEntityColumns" Association="Self.Relationship_SecondEntityColumns">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="RelationshipColumns" EntitySet="RelationshipColumns" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MyProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ArcRelationshipGroup" EntityType="MyProjectModel.ArcRelationshipGroup" />
+          <EntitySet Name="ArcRelationshipGroup_Relationship" EntityType="MyProjectModel.ArcRelationshipGroup_Relationship" />
+          <EntitySet Name="Column" EntityType="MyProjectModel.Column" />
+          <EntitySet Name="Column_Tag" EntityType="MyProjectModel.Column_Tag" />
+          <EntitySet Name="ColumnKeyValue" EntityType="MyProjectModel.ColumnKeyValue" />
+          <EntitySet Name="ColumnKeyValueRange" EntityType="MyProjectModel.ColumnKeyValueRange" />
+          <EntitySet Name="DatabaseInformation" EntityType="MyProjectModel.DatabaseInformation" />
+          <EntitySet Name="DateColumnType" EntityType="MyProjectModel.DateColumnType" />
+          <EntitySet Name="Entity_Tag" EntityType="MyProjectModel.Entity_Tag" />
+          <EntitySet Name="ExplicitOneToOneRelationshipType" EntityType="MyProjectModel.ExplicitOneToOneRelationshipType" />
+          <EntitySet Name="ImplicitOneToOneRelationshipType" EntityType="MyProjectModel.ImplicitOneToOneRelationshipType" />
+          <EntitySet Name="ISARelationship" EntityType="MyProjectModel.ISARelationship" />
+          <EntitySet Name="ManyToManyRelationshipType" EntityType="MyProjectModel.ManyToManyRelationshipType" />
+          <EntitySet Name="ManyToOneRelationshipType" EntityType="MyProjectModel.ManyToOneRelationshipType" />
+          <EntitySet Name="NumericColumnType" EntityType="MyProjectModel.NumericColumnType" />
+          <EntitySet Name="OneToManyRelationshipType" EntityType="MyProjectModel.OneToManyRelationshipType" />
+          <EntitySet Name="Relationship" EntityType="MyProjectModel.Relationship" />
+          <EntitySet Name="RelationshipColumns" EntityType="MyProjectModel.RelationshipColumns" />
+          <EntitySet Name="RelationshipType" EntityType="MyProjectModel.RelationshipType" />
+          <EntitySet Name="RuleOnValue" EntityType="MyProjectModel.RuleOnValue" />
+          <EntitySet Name="RuleOnValue_Column" EntityType="MyProjectModel.RuleOnValue_Column" />
+          <EntitySet Name="RuleOnValue_Relationship" EntityType="MyProjectModel.RuleOnValue_Relationship" />
+          <EntitySet Name="StringColumnType" EntityType="MyProjectModel.StringColumnType" />
+          <EntitySet Name="SubToSuperRelationshipType" EntityType="MyProjectModel.SubToSuperRelationshipType" />
+          <EntitySet Name="SubUnionToUnionRelationshipType" EntityType="MyProjectModel.SubUnionToUnionRelationshipType" />
+          <EntitySet Name="SuperToSubRelationshipType" EntityType="MyProjectModel.SuperToSubRelationshipType" />
+          <EntitySet Name="Table" EntityType="MyProjectModel.Table" />
+          <EntitySet Name="TableDrivedEntity" EntityType="MyProjectModel.TableDrivedEntity" />
+          <EntitySet Name="Tag" EntityType="MyProjectModel.Tag" />
+          <EntitySet Name="UnionRelationshipType" EntityType="MyProjectModel.UnionRelationshipType" />
+          <EntitySet Name="UnionToSubUnionRelationshipType" EntityType="MyProjectModel.UnionToSubUnionRelationshipType" />
+          <EntitySet Name="UniqueConstraint" EntityType="MyProjectModel.UniqueConstraint" />
+          <AssociationSet Name="FKArcRelatio252133" Association="MyProjectModel.FKArcRelatio252133">
+            <End Role="ArcRelationshipGroup" EntitySet="ArcRelationshipGroup" />
+            <End Role="ArcRelationshipGroup_Relationship" EntitySet="ArcRelationshipGroup_Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKArcRelatio319969" Association="MyProjectModel.FKArcRelatio319969">
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+            <End Role="ArcRelationshipGroup" EntitySet="ArcRelationshipGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FKArcRelatio150451" Association="MyProjectModel.FKArcRelatio150451">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="ArcRelationshipGroup_Relationship" EntitySet="ArcRelationshipGroup_Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumn_Tag522204" Association="MyProjectModel.FKColumn_Tag522204">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="Column_Tag" EntitySet="Column_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumn659222" Association="MyProjectModel.FKColumn659222">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="Column" EntitySet="Column" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumnKeyV956181" Association="MyProjectModel.FKColumnKeyV956181">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="ColumnKeyValue" EntitySet="ColumnKeyValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKDateColumn74546" Association="MyProjectModel.FKDateColumn74546">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="DateColumnType" EntitySet="DateColumnType" />
+          </AssociationSet>
+          <AssociationSet Name="FKNumericCol878005" Association="MyProjectModel.FKNumericCol878005">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="NumericColumnType" EntitySet="NumericColumnType" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu232166" Association="MyProjectModel.FKRuleOnValu232166">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="RuleOnValue_Column" EntitySet="RuleOnValue_Column" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu430106" Association="MyProjectModel.FKRuleOnValu430106">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="RuleOnValue" EntitySet="RuleOnValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKStringColu936883" Association="MyProjectModel.FKStringColu936883">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="StringColumnType" EntitySet="StringColumnType" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship_FirstEntityColumns" Association="MyProjectModel.Relationship_FirstEntityColumns">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="RelationshipColumns" EntitySet="RelationshipColumns" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship_SecondEntityColumns" Association="MyProjectModel.Relationship_SecondEntityColumns">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="RelationshipColumns" EntitySet="RelationshipColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumn_Tag50308" Association="MyProjectModel.FKColumn_Tag50308">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="Column_Tag" EntitySet="Column_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FKColumnKeyV918647" Association="MyProjectModel.FKColumnKeyV918647">
+            <End Role="ColumnKeyValue" EntitySet="ColumnKeyValue" />
+            <End Role="ColumnKeyValueRange" EntitySet="ColumnKeyValueRange" />
+          </AssociationSet>
+          <AssociationSet Name="FKEntity_Tag411767" Association="MyProjectModel.FKEntity_Tag411767">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="Entity_Tag" EntitySet="Entity_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FKEntity_Tag496649" Association="MyProjectModel.FKEntity_Tag496649">
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+            <End Role="Entity_Tag" EntitySet="Entity_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FKExplicitOn408720" Association="MyProjectModel.FKExplicitOn408720">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="ExplicitOneToOneRelationshipType" EntitySet="ExplicitOneToOneRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKImplicitOn720517" Association="MyProjectModel.FKImplicitOn720517">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="ImplicitOneToOneRelationshipType" EntitySet="ImplicitOneToOneRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSubToSuper88193" Association="MyProjectModel.FKSubToSuper88193">
+            <End Role="ISARelationship" EntitySet="ISARelationship" />
+            <End Role="SubToSuperRelationshipType" EntitySet="SubToSuperRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSuperToSub515953" Association="MyProjectModel.FKSuperToSub515953">
+            <End Role="ISARelationship" EntitySet="ISARelationship" />
+            <End Role="SuperToSubRelationshipType" EntitySet="SuperToSubRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKManyToOneR998042" Association="MyProjectModel.FKManyToOneR998042">
+            <End Role="ManyToManyRelationshipType" EntitySet="ManyToManyRelationshipType" />
+            <End Role="ManyToOneRelationshipType" EntitySet="ManyToOneRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKManyToOneR336195" Association="MyProjectModel.FKManyToOneR336195">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="ManyToOneRelationshipType" EntitySet="ManyToOneRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKOneToManyR245498" Association="MyProjectModel.FKOneToManyR245498">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="OneToManyRelationshipType" EntitySet="OneToManyRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh250123" Association="MyProjectModel.FKRelationsh250123">
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+            <End Role="Relationship" EntitySet="Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh250124" Association="MyProjectModel.FKRelationsh250124">
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+            <End Role="Relationship" EntitySet="Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh639988" Association="MyProjectModel.FKRelationsh639988">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="Relationship1" EntitySet="Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh685437" Association="MyProjectModel.FKRelationsh685437">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="RelationshipColumns" EntitySet="RelationshipColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FKRelationsh827735" Association="MyProjectModel.FKRelationsh827735">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu865040" Association="MyProjectModel.FKRuleOnValu865040">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="RuleOnValue_Relationship" EntitySet="RuleOnValue_Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKSubToSuper672991" Association="MyProjectModel.FKSubToSuper672991">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="SubToSuperRelationshipType" EntitySet="SubToSuperRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSubUnionTo818068" Association="MyProjectModel.FKSubUnionTo818068">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="SubUnionToUnionRelationshipType" EntitySet="SubUnionToUnionRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKSuperToSub305547" Association="MyProjectModel.FKSuperToSub305547">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="SuperToSubRelationshipType" EntitySet="SuperToSubRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKUnionToSub14902" Association="MyProjectModel.FKUnionToSub14902">
+            <End Role="RelationshipType" EntitySet="RelationshipType" />
+            <End Role="UnionToSubUnionRelationshipType" EntitySet="UnionToSubUnionRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu624839" Association="MyProjectModel.FKRuleOnValu624839">
+            <End Role="RuleOnValue" EntitySet="RuleOnValue" />
+            <End Role="RuleOnValue_Relationship" EntitySet="RuleOnValue_Relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FKRuleOnValu925452" Association="MyProjectModel.FKRuleOnValu925452">
+            <End Role="RuleOnValue" EntitySet="RuleOnValue" />
+            <End Role="RuleOnValue_Column" EntitySet="RuleOnValue_Column" />
+          </AssociationSet>
+          <AssociationSet Name="FKSubUnionTo235113" Association="MyProjectModel.FKSubUnionTo235113">
+            <End Role="UnionRelationshipType" EntitySet="UnionRelationshipType" />
+            <End Role="SubUnionToUnionRelationshipType" EntitySet="SubUnionToUnionRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="FKTableDrive311898" Association="MyProjectModel.FKTableDrive311898">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+          </AssociationSet>
+          <AssociationSet Name="FKUniqueCons110156" Association="MyProjectModel.FKUniqueCons110156">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="UniqueConstraint" EntitySet="UniqueConstraint" />
+          </AssociationSet>
+          <AssociationSet Name="FKUnionToSub933310" Association="MyProjectModel.FKUnionToSub933310">
+            <End Role="UnionRelationshipType" EntitySet="UnionRelationshipType" />
+            <End Role="UnionToSubUnionRelationshipType" EntitySet="UnionToSubUnionRelationshipType" />
+          </AssociationSet>
+          <AssociationSet Name="TableDrivedEntity_Columns" Association="MyProjectModel.TableDrivedEntity_Columns">
+            <End Role="Column" EntitySet="Column" />
+            <End Role="TableDrivedEntity" EntitySet="TableDrivedEntity" />
+          </AssociationSet>
+          <AssociationSet Name="UniqueConstraint_Column" Association="MyProjectModel.UniqueConstraint_Column">
+            <End Role="UniqueConstraint" EntitySet="UniqueConstraint" />
+            <End Role="Column" EntitySet="Column" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ArcRelationshipGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableDrivedEntityID" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ArcRelationshipGroup_Relationship" Relationship="MyProjectModel.FKArcRelatio252133" FromRole="ArcRelationshipGroup" ToRole="ArcRelationshipGroup_Relationship" />
+          <NavigationProperty Name="TableDrivedEntity" Relationship="MyProjectModel.FKArcRelatio319969" FromRole="ArcRelationshipGroup" ToRole="TableDrivedEntity" />
+        </EntityType>
+        <EntityType Name="ArcRelationshipGroup_Relationship">
+          <Key>
+            <PropertyRef Name="RelationshipID" />
+            <PropertyRef Name="ArcRelationshipGroupID" />
+          </Key>
+          <Property Name="RelationshipID" Type="Int32" Nullable="false" />
+          <Property Name="ArcRelationshipGroupID" Type="Int32" Nullable="false" />
+          <Property Name="Dummy2" Type="Boolean" />
+          <Property Name="Dummy" Type="Boolean" />
+          <NavigationProperty Name="ArcRelationshipGroup" Relationship="MyProjectModel.FKArcRelatio252133" FromRole="ArcRelationshipGroup_Relationship" ToRole="ArcRelationshipGroup" />
+          <NavigationProperty Name="Relationship" Relationship="MyProjectModel.FKArcRelatio150451" FromRole="ArcRelationshipGroup_Relationship" ToRole="Relationship" />
+        </EntityType>
+        <EntityType Name="Column">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Value" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryKey" Type="Boolean" Nullable="false" />
+          <Property Name="IsIdentity" Type="Boolean" Nullable="false" />
+          <Property Name="IsNull" Type="Boolean" Nullable="false" />
+          <Property Name="IsMandatory" Type="Boolean" Nullable="false" />
+          <Property Name="DefaultValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="DataType" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="Alias" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DataEntryEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="SearchEnabled" Type="Boolean" />
+          <Property Name="ViewEnabled" Type="Boolean" />
+          <NavigationProperty Name="Column_Tag" Relationship="MyProjectModel.FKColumn_Tag522204" FromRole="Column" ToRole="Column_Tag" />
+          <NavigationProperty Name="Table" Relationship="MyProjectModel.FKColumn659222" FromRole="Column" ToRole="Table" />
+          <NavigationProperty Name="ColumnKeyValue" Relationship="MyProjectModel.FKColumnKeyV956181" FromRole="Column" ToRole="ColumnKeyValue" />
+          <NavigationProperty Name="DateColumnType" Relationship="MyProjectModel.FKDateColumn74546" FromRole="Column" ToRole="DateColumnType" />
+          <NavigationProperty Name="NumericColumnType" Relationship="MyProjectModel.FKNumericCol878005" FromRole="Column" ToRole="NumericColumnType" />
+          <NavigationProperty Name="RuleOnValue_Column" Relationship="MyProjectModel.FKRuleOnValu232166" FromRole="Column" ToRole="RuleOnValue_Column" />
+          <NavigationProperty Name="RuleOnValue" Relationship="MyProjectModel.FKRuleOnValu430106" FromRole="Column" ToRole="RuleOnValue" />
+          <NavigationProperty Name="StringColumnType" Relationship="MyProjectModel.FKStringColu936883" FromRole="Column" ToRole="StringColumnType" />
+          <NavigationProperty Name="RelationshipColumns" Relationship="MyProjectModel.Relationship_FirstEntityColumns" FromRole="Column" ToRole="RelationshipColumns" />
+          <NavigationProperty Name="RelationshipColumns1" Relationship="MyProjectModel.Relationship_SecondEntityColumns" FromRole="Column" ToRole="RelationshipColumns" />
+          <NavigationProperty Name="TableDrivedEntity" Relationship="MyProjectModel.TableDrivedEntity_Columns" FromRole="Column" ToRole="TableDrivedEntity" />
+          <NavigationProperty Name="UniqueConstraint" Relationship="MyProjectModel.UniqueConstraint_Column" FromRole="Column" ToRole="UniqueConstraint" />
+        </EntityType>
+        <EntityType Name="Column_Tag">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="ColumnID" Type="Int32" Nullable="false" />
+          <Property Name="TagID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.FKColumn_Tag522204" FromRole="Column_Tag" ToRole="Column" />
+          <NavigationProperty Name="Tag" Relationship="MyProjectModel.FKColumn_Tag50308" FromRole="Column_Tag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="ColumnKeyValue">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="Int32" Nullable="false" />
+          <Property Name="ValueFromKeyOrValue" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.FKColumnKeyV956181" FromRole="ColumnKeyValue" ToRole="Column" />
+          <NavigationProperty Name="ColumnKeyValueRange" Relationship="MyProjectModel.FKColumnKeyV918647" FromRole="ColumnKeyValue" ToRole="ColumnKeyValueRange" />
+        </EntityType>
+        <EntityType Name="ColumnKeyValueRange">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ColumnID" Type="Int32" Nullable="false" />
+          <Property Name="KeyTitle" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Int32" />
+          <NavigationProperty Name="ColumnKeyValue" Relationship="MyProjectModel.FKColumnKeyV918647" FromRole="ColumnKeyValueRange" ToRole="ColumnKeyValue" />
+        </EntityType>
+        <EntityType Name="DatabaseInformation">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionString" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DateColumnType">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="Int32" Nullable="false" />
+          <Property Name="IsPersianDate" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.FKDateColumn74546" FromRole="DateColumnType" ToRole="Column" />
+        </EntityType>
+        <EntityType Name="Entity_Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+            <PropertyRef Name="TableDrivedEntityID" />
+          </Key>
+          <Property Name="TagID" Type="Int32" Nullable="false" />
+          <Property Name="TableDrivedEntityID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tag" Relationship="MyProjectModel.FKEntity_Tag411767" FromRole="Entity_Tag" ToRole="Tag" />
+          <NavigationProperty Name="TableDrivedEntity" Relationship="MyProjectModel.FKEntity_Tag496649" FromRole="Entity_Tag" ToRole="TableDrivedEntity" />
+        </EntityType>
+        <EntityType Name="ExplicitOneToOneRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RelationshipType" Relationship="MyProjectModel.FKExplicitOn408720" FromRole="ExplicitOneToOneRelationshipType" ToRole="RelationshipType" />
+        </EntityType>
+        <EntityType Name="ImplicitOneToOneRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RelationshipType" Relationship="MyProjectModel.FKImplicitOn720517" FromRole="ImplicitOneToOneRelationshipType" ToRole="RelationshipType" />
+        </EntityType>
+        <EntityType Name="ISARelationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="IsGeneralization" Type="Boolean" />
+          <Property Name="IsSpecialization" Type="Boolean" />
+          <Property Name="IsTolatParticipation" Type="Boolean" Nullable="false" />
+          <Property Name="IsDisjoint" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SubToSuperRelationshipType" Relationship="MyProjectModel.FKSubToSuper88193" FromRole="ISARelationship" ToRole="SubToSuperRelationshipType" />
+          <NavigationProperty Name="SuperToSubRelationshipType" Relationship="MyProjectModel.FKSuperToSub515953" FromRole="ISARelationship" ToRole="SuperToSubRelationshipType" />
+        </EntityType>
+        <EntityType Name="ManyToManyRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ManyToOneRelationshipType" Relationship="MyProjectModel.FKManyToOneR998042" FromRole="ManyToManyRelationshipType" ToRole="ManyToOneRelationshipType" />
+        </EntityType>
+        <EntityType Name="ManyToOneRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ManyToManyRelationshipTypeID" Type="Int32" />
+          <NavigationProperty Name="ManyToManyRelationshipType" Relationship="MyProjectModel.FKManyToOneR998042" FromRole="ManyToOneRelationshipType" ToRole="ManyToManyRelationshipType" />
+          <NavigationProperty Name="RelationshipType" Relationship="MyProjectModel.FKManyToOneR336195" FromRole="ManyToOneRelationshipType" ToRole="RelationshipType" />
+        </EntityType>
+        <EntityType Name="NumericColumnType">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="Int32" Nullable="false" />
+          <Property Name="Precision" Type="Int32" />
+          <Property Name="Scale" Type="Int32" />
+          <Property Name="MinValue" Type="Int32" />
+          <Property Name="MaxValue" Type="Int32" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.FKNumericCol878005" FromRole="NumericColumnType" ToRole="Column" />
+        </EntityType>
+        <EntityType Name="OneToManyRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="MasterDetailState" Type="Int16" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ManySideCount" Type="Int32" />
+          <NavigationProperty Name="RelationshipType" Relationship="MyProjectModel.FKOneToManyR245498" FromRole="OneToManyRelationshipType" ToRole="RelationshipType" />
+        </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RelationshipID" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Alias" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DataEntryEnabled" Type="Boolean" />
+          <Property Name="SearchEnabled" Type="Boolean" />
+          <Property Name="ViewEnabled" Type="Boolean" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="FirstSideTableID" Type="Int32" Nullable="false" />
+          <Property Name="SecondSideTableID" Type="Int32" Nullable="false" />
+          <Property Name="TableDrivedEntityID1" Type="Int32" Nullable="false" />
+          <Property Name="TableDrivedEntityID2" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ArcRelationshipGroup_Relationship" Relationship="MyProjectModel.FKArcRelatio150451" FromRole="Relationship" ToRole="ArcRelationshipGroup_Relationship" />
+          <NavigationProperty Name="TableDrivedEntity" Relationship="MyProjectModel.FKRelationsh250123" FromRole="Relationship" ToRole="TableDrivedEntity" />
+          <NavigationProperty Name="TableDrivedEntity1" Relationship="MyProjectModel.FKRelationsh250124" FromRole="Relationship" ToRole="TableDrivedEntity" />
+          <NavigationProperty Name="Relationship1" Relationship="MyProjectModel.FKRelationsh639988" FromRole="Relationship" ToRole="Relationship1" />
+          <NavigationProperty Name="Relationship2" Relationship="MyProjectModel.FKRelationsh639988" FromRole="Relationship1" ToRole="Relationship" />
+          <NavigationProperty Name="RelationshipColumns" Relationship="MyProjectModel.FKRelationsh685437" FromRole="Relationship" ToRole="RelationshipColumns" />
+          <NavigationProperty Name="RelationshipType" Relationship="MyProjectModel.FKRelationsh827735" FromRole="Relationship" ToRole="RelationshipType" />
+          <NavigationProperty Name="RuleOnValue_Relationship" Relationship="MyProjectModel.FKRuleOnValu865040" FromRole="Relationship" ToRole="RuleOnValue_Relationship" />
+        </EntityType>
+        <EntityType Name="RelationshipColumns">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RelationshipID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RelationshipID" Type="Int32" Nullable="false" />
+          <Property Name="FirstSideColumnID" Type="Int32" Nullable="false" />
+          <Property Name="SecondSideColumnID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.Relationship_FirstEntityColumns" FromRole="RelationshipColumns" ToRole="Column" />
+          <NavigationProperty Name="Column1" Relationship="MyProjectModel.Relationship_SecondEntityColumns" FromRole="RelationshipColumns" ToRole="Column" />
+          <NavigationProperty Name="Relationship" Relationship="MyProjectModel.FKRelationsh685437" FromRole="RelationshipColumns" ToRole="Relationship" />
+        </EntityType>
+        <EntityType Name="RelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IsOtherSideMandatory" Type="Boolean" Nullable="false" />
+          <Property Name="IsOtherSideTransferable" Type="Boolean" />
+          <Property Name="IsOtherSideCreatable" Type="Boolean" Nullable="false" />
+          <Property Name="IsOtherSideDirectlyCreatable" Type="Boolean" />
+          <NavigationProperty Name="ExplicitOneToOneRelationshipType" Relationship="MyProjectModel.FKExplicitOn408720" FromRole="RelationshipType" ToRole="ExplicitOneToOneRelationshipType" />
+          <NavigationProperty Name="ImplicitOneToOneRelationshipType" Relationship="MyProjectModel.FKImplicitOn720517" FromRole="RelationshipType" ToRole="ImplicitOneToOneRelationshipType" />
+          <NavigationProperty Name="ManyToOneRelationshipType" Relationship="MyProjectModel.FKManyToOneR336195" FromRole="RelationshipType" ToRole="ManyToOneRelationshipType" />
+          <NavigationProperty Name="OneToManyRelationshipType" Relationship="MyProjectModel.FKOneToManyR245498" FromRole="RelationshipType" ToRole="OneToManyRelationshipType" />
+          <NavigationProperty Name="Relationship" Relationship="MyProjectModel.FKRelationsh827735" FromRole="RelationshipType" ToRole="Relationship" />
+          <NavigationProperty Name="SubToSuperRelationshipType" Relationship="MyProjectModel.FKSubToSuper672991" FromRole="RelationshipType" ToRole="SubToSuperRelationshipType" />
+          <NavigationProperty Name="SubUnionToUnionRelationshipType" Relationship="MyProjectModel.FKSubUnionTo818068" FromRole="RelationshipType" ToRole="SubUnionToUnionRelationshipType" />
+          <NavigationProperty Name="SuperToSubRelationshipType" Relationship="MyProjectModel.FKSuperToSub305547" FromRole="RelationshipType" ToRole="SuperToSubRelationshipType" />
+          <NavigationProperty Name="UnionToSubUnionRelationshipType" Relationship="MyProjectModel.FKUnionToSub14902" FromRole="RelationshipType" ToRole="UnionToSubUnionRelationshipType" />
+        </EntityType>
+        <EntityType Name="RuleOnValue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ColumnID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.FKRuleOnValu430106" FromRole="RuleOnValue" ToRole="Column" />
+          <NavigationProperty Name="RuleOnValue_Relationship" Relationship="MyProjectModel.FKRuleOnValu624839" FromRole="RuleOnValue" ToRole="RuleOnValue_Relationship" />
+          <NavigationProperty Name="RuleOnValue_Column" Relationship="MyProjectModel.FKRuleOnValu925452" FromRole="RuleOnValue" ToRole="RuleOnValue_Column" />
+        </EntityType>
+        <EntityType Name="RuleOnValue_Column">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+            <PropertyRef Name="RuleOnValueID" />
+          </Key>
+          <Property Name="ColumnID" Type="Int32" Nullable="false" />
+          <Property Name="RuleOnValueID" Type="Int32" Nullable="false" />
+          <Property Name="ValidValue" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.FKRuleOnValu232166" FromRole="RuleOnValue_Column" ToRole="Column" />
+          <NavigationProperty Name="RuleOnValue" Relationship="MyProjectModel.FKRuleOnValu925452" FromRole="RuleOnValue_Column" ToRole="RuleOnValue" />
+        </EntityType>
+        <EntityType Name="RuleOnValue_Relationship">
+          <Key>
+            <PropertyRef Name="RelationshipID" />
+            <PropertyRef Name="RuleOnValueID" />
+          </Key>
+          <Property Name="RelationshipID" Type="Int32" Nullable="false" />
+          <Property Name="RuleOnValueID" Type="Int32" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="Relationship" Relationship="MyProjectModel.FKRuleOnValu865040" FromRole="RuleOnValue_Relationship" ToRole="Relationship" />
+          <NavigationProperty Name="RuleOnValue" Relationship="MyProjectModel.FKRuleOnValu624839" FromRole="RuleOnValue_Relationship" ToRole="RuleOnValue" />
+        </EntityType>
+        <EntityType Name="StringColumnType">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="Int32" Nullable="false" />
+          <Property Name="MaxLength" Type="Int32" Nullable="false" />
+          <Property Name="Format" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.FKStringColu936883" FromRole="StringColumnType" ToRole="Column" />
+        </EntityType>
+        <EntityType Name="SubToSuperRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ISARelationshipID" Type="Int32" Nullable="false" />
+          <Property Name="Dummy" Type="Boolean" />
+          <NavigationProperty Name="ISARelationship" Relationship="MyProjectModel.FKSubToSuper88193" FromRole="SubToSuperRelationshipType" ToRole="ISARelationship" />
+          <NavigationProperty Name="RelationshipType" Relationship="MyProjectModel.FKSubToSuper672991" FromRole="SubToSuperRelationshipType" ToRole="RelationshipType" />
+        </EntityType>
+        <EntityType Name="SubUnionToUnionRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UnionRelationshipTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Dummy" Type="Boolean" />
+          <NavigationProperty Name="RelationshipType" Relationship="MyProjectModel.FKSubUnionTo818068" FromRole="SubUnionToUnionRelationshipType" ToRole="RelationshipType" />
+          <NavigationProperty Name="UnionRelationshipType" Relationship="MyProjectModel.FKSubUnionTo235113" FromRole="SubUnionToUnionRelationshipType" ToRole="UnionRelationshipType" />
+        </EntityType>
+        <EntityType Name="SuperToSubRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ISARelationshipID" Type="Int32" Nullable="false" />
+          <Property Name="Dummy" Type="Boolean" />
+          <NavigationProperty Name="ISARelationship" Relationship="MyProjectModel.FKSuperToSub515953" FromRole="SuperToSubRelationshipType" ToRole="ISARelationship" />
+          <NavigationProperty Name="RelationshipType" Relationship="MyProjectModel.FKSuperToSub305547" FromRole="SuperToSubRelationshipType" ToRole="RelationshipType" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="RelatedSchema" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Catalog" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Alias" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="BatchDataEntry" Type="Boolean" />
+          <Property Name="IsDataReference" Type="Boolean" />
+          <Property Name="IsStructurReferencee" Type="Boolean" />
+          <Property Name="IsAssociative" Type="Boolean" />
+          <Property Name="IsInheritanceImplementation" Type="Boolean" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.FKColumn659222" FromRole="Table" ToRole="Column" />
+          <NavigationProperty Name="TableDrivedEntity" Relationship="MyProjectModel.FKTableDrive311898" FromRole="Table" ToRole="TableDrivedEntity" />
+          <NavigationProperty Name="UniqueConstraint" Relationship="MyProjectModel.FKUniqueCons110156" FromRole="Table" ToRole="UniqueConstraint" />
+        </EntityType>
+        <EntityType Name="TableDrivedEntity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Alias" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Criteria" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="IndependentDataEntry" Type="Boolean" />
+          <Property Name="BatchDataEntry" Type="Boolean" />
+          <Property Name="IsDataReference" Type="Boolean" />
+          <Property Name="IsStructurReferencee" Type="Boolean" />
+          <Property Name="IsAssociative" Type="Boolean" />
+          <NavigationProperty Name="ArcRelationshipGroup" Relationship="MyProjectModel.FKArcRelatio319969" FromRole="TableDrivedEntity" ToRole="ArcRelationshipGroup" />
+          <NavigationProperty Name="Entity_Tag" Relationship="MyProjectModel.FKEntity_Tag496649" FromRole="TableDrivedEntity" ToRole="Entity_Tag" />
+          <NavigationProperty Name="Relationship" Relationship="MyProjectModel.FKRelationsh250123" FromRole="TableDrivedEntity" ToRole="Relationship" />
+          <NavigationProperty Name="Relationship1" Relationship="MyProjectModel.FKRelationsh250124" FromRole="TableDrivedEntity" ToRole="Relationship" />
+          <NavigationProperty Name="Table" Relationship="MyProjectModel.FKTableDrive311898" FromRole="TableDrivedEntity" ToRole="Table" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.TableDrivedEntity_Columns" FromRole="TableDrivedEntity" ToRole="Column" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Column_Tag" Relationship="MyProjectModel.FKColumn_Tag50308" FromRole="Tag" ToRole="Column_Tag" />
+          <NavigationProperty Name="Entity_Tag" Relationship="MyProjectModel.FKEntity_Tag411767" FromRole="Tag" ToRole="Entity_Tag" />
+        </EntityType>
+        <EntityType Name="UnionRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="IsTolatParticipation" Type="Boolean" Nullable="false" />
+          <Property Name="UnionHoldsKeys" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SubUnionToUnionRelationshipType" Relationship="MyProjectModel.FKSubUnionTo235113" FromRole="UnionRelationshipType" ToRole="SubUnionToUnionRelationshipType" />
+          <NavigationProperty Name="UnionToSubUnionRelationshipType" Relationship="MyProjectModel.FKUnionToSub933310" FromRole="UnionRelationshipType" ToRole="UnionToSubUnionRelationshipType" />
+        </EntityType>
+        <EntityType Name="UnionToSubUnionRelationshipType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UnionRelationshipTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Dummy" Type="Boolean" />
+          <NavigationProperty Name="RelationshipType" Relationship="MyProjectModel.FKUnionToSub14902" FromRole="UnionToSubUnionRelationshipType" ToRole="RelationshipType" />
+          <NavigationProperty Name="UnionRelationshipType" Relationship="MyProjectModel.FKUnionToSub933310" FromRole="UnionToSubUnionRelationshipType" ToRole="UnionRelationshipType" />
+        </EntityType>
+        <EntityType Name="UniqueConstraint">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Table" Relationship="MyProjectModel.FKUniqueCons110156" FromRole="UniqueConstraint" ToRole="Table" />
+          <NavigationProperty Name="Column" Relationship="MyProjectModel.UniqueConstraint_Column" FromRole="UniqueConstraint" ToRole="Column" />
+        </EntityType>
+        <Association Name="FKArcRelatio252133">
+          <End Type="MyProjectModel.ArcRelationshipGroup" Role="ArcRelationshipGroup" Multiplicity="1" />
+          <End Type="MyProjectModel.ArcRelationshipGroup_Relationship" Role="ArcRelationshipGroup_Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArcRelationshipGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ArcRelationshipGroup_Relationship">
+              <PropertyRef Name="ArcRelationshipGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKArcRelatio319969">
+          <End Type="MyProjectModel.TableDrivedEntity" Role="TableDrivedEntity" Multiplicity="1" />
+          <End Type="MyProjectModel.ArcRelationshipGroup" Role="ArcRelationshipGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableDrivedEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ArcRelationshipGroup">
+              <PropertyRef Name="TableDrivedEntityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKArcRelatio150451">
+          <End Type="MyProjectModel.Relationship" Role="Relationship" Multiplicity="1" />
+          <End Type="MyProjectModel.ArcRelationshipGroup_Relationship" Role="ArcRelationshipGroup_Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ArcRelationshipGroup_Relationship">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumn_Tag522204">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="1" />
+          <End Type="MyProjectModel.Column_Tag" Role="Column_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Column_Tag">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumn659222">
+          <End Type="MyProjectModel.Table" Role="Table" Multiplicity="1" />
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Column">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumnKeyV956181">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="1" />
+          <End Type="MyProjectModel.ColumnKeyValue" Role="ColumnKeyValue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ColumnKeyValue">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKDateColumn74546">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="1" />
+          <End Type="MyProjectModel.DateColumnType" Role="DateColumnType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DateColumnType">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNumericCol878005">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="1" />
+          <End Type="MyProjectModel.NumericColumnType" Role="NumericColumnType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NumericColumnType">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu232166">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="1" />
+          <End Type="MyProjectModel.RuleOnValue_Column" Role="RuleOnValue_Column" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue_Column">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu430106">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="1" />
+          <End Type="MyProjectModel.RuleOnValue" Role="RuleOnValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKStringColu936883">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="1" />
+          <End Type="MyProjectModel.StringColumnType" Role="StringColumnType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StringColumnType">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship_FirstEntityColumns">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="1" />
+          <End Type="MyProjectModel.RelationshipColumns" Role="RelationshipColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationshipColumns">
+              <PropertyRef Name="FirstSideColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship_SecondEntityColumns">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="1" />
+          <End Type="MyProjectModel.RelationshipColumns" Role="RelationshipColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Column">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationshipColumns">
+              <PropertyRef Name="SecondSideColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumn_Tag50308">
+          <End Type="MyProjectModel.Tag" Role="Tag" Multiplicity="1" />
+          <End Type="MyProjectModel.Column_Tag" Role="Column_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Column_Tag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKColumnKeyV918647">
+          <End Type="MyProjectModel.ColumnKeyValue" Role="ColumnKeyValue" Multiplicity="1" />
+          <End Type="MyProjectModel.ColumnKeyValueRange" Role="ColumnKeyValueRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ColumnKeyValue">
+              <PropertyRef Name="ColumnID" />
+            </Principal>
+            <Dependent Role="ColumnKeyValueRange">
+              <PropertyRef Name="ColumnID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEntity_Tag411767">
+          <End Type="MyProjectModel.Tag" Role="Tag" Multiplicity="1" />
+          <End Type="MyProjectModel.Entity_Tag" Role="Entity_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Entity_Tag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEntity_Tag496649">
+          <End Type="MyProjectModel.TableDrivedEntity" Role="TableDrivedEntity" Multiplicity="1" />
+          <End Type="MyProjectModel.Entity_Tag" Role="Entity_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableDrivedEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Entity_Tag">
+              <PropertyRef Name="TableDrivedEntityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKExplicitOn408720">
+          <End Type="MyProjectModel.RelationshipType" Role="RelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.ExplicitOneToOneRelationshipType" Role="ExplicitOneToOneRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExplicitOneToOneRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKImplicitOn720517">
+          <End Type="MyProjectModel.RelationshipType" Role="RelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.ImplicitOneToOneRelationshipType" Role="ImplicitOneToOneRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImplicitOneToOneRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSubToSuper88193">
+          <End Type="MyProjectModel.ISARelationship" Role="ISARelationship" Multiplicity="1" />
+          <End Type="MyProjectModel.SubToSuperRelationshipType" Role="SubToSuperRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ISARelationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubToSuperRelationshipType">
+              <PropertyRef Name="ISARelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSuperToSub515953">
+          <End Type="MyProjectModel.ISARelationship" Role="ISARelationship" Multiplicity="1" />
+          <End Type="MyProjectModel.SuperToSubRelationshipType" Role="SuperToSubRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ISARelationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SuperToSubRelationshipType">
+              <PropertyRef Name="ISARelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKManyToOneR998042">
+          <End Type="MyProjectModel.ManyToManyRelationshipType" Role="ManyToManyRelationshipType" Multiplicity="0..1" />
+          <End Type="MyProjectModel.ManyToOneRelationshipType" Role="ManyToOneRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManyToManyRelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ManyToOneRelationshipType">
+              <PropertyRef Name="ManyToManyRelationshipTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKManyToOneR336195">
+          <End Type="MyProjectModel.RelationshipType" Role="RelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.ManyToOneRelationshipType" Role="ManyToOneRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ManyToOneRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKOneToManyR245498">
+          <End Type="MyProjectModel.RelationshipType" Role="RelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.OneToManyRelationshipType" Role="OneToManyRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OneToManyRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh250123">
+          <End Type="MyProjectModel.TableDrivedEntity" Role="TableDrivedEntity" Multiplicity="1" />
+          <End Type="MyProjectModel.Relationship" Role="Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableDrivedEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Relationship">
+              <PropertyRef Name="TableDrivedEntityID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh250124">
+          <End Type="MyProjectModel.TableDrivedEntity" Role="TableDrivedEntity" Multiplicity="1" />
+          <End Type="MyProjectModel.Relationship" Role="Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableDrivedEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Relationship">
+              <PropertyRef Name="TableDrivedEntityID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh639988">
+          <End Type="MyProjectModel.Relationship" Role="Relationship" Multiplicity="0..1" />
+          <End Type="MyProjectModel.Relationship" Role="Relationship1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Relationship1">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh685437">
+          <End Type="MyProjectModel.Relationship" Role="Relationship" Multiplicity="1" />
+          <End Type="MyProjectModel.RelationshipColumns" Role="RelationshipColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationshipColumns">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRelationsh827735">
+          <End Type="MyProjectModel.Relationship" Role="Relationship" Multiplicity="1" />
+          <End Type="MyProjectModel.RelationshipType" Role="RelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu865040">
+          <End Type="MyProjectModel.Relationship" Role="Relationship" Multiplicity="1" />
+          <End Type="MyProjectModel.RuleOnValue_Relationship" Role="RuleOnValue_Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue_Relationship">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSubToSuper672991">
+          <End Type="MyProjectModel.RelationshipType" Role="RelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.SubToSuperRelationshipType" Role="SubToSuperRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubToSuperRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSubUnionTo818068">
+          <End Type="MyProjectModel.RelationshipType" Role="RelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.SubUnionToUnionRelationshipType" Role="SubUnionToUnionRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubUnionToUnionRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSuperToSub305547">
+          <End Type="MyProjectModel.RelationshipType" Role="RelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.SuperToSubRelationshipType" Role="SuperToSubRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SuperToSubRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUnionToSub14902">
+          <End Type="MyProjectModel.RelationshipType" Role="RelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.UnionToSubUnionRelationshipType" Role="UnionToSubUnionRelationshipType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnionToSubUnionRelationshipType">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu624839">
+          <End Type="MyProjectModel.RuleOnValue" Role="RuleOnValue" Multiplicity="1" />
+          <End Type="MyProjectModel.RuleOnValue_Relationship" Role="RuleOnValue_Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RuleOnValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue_Relationship">
+              <PropertyRef Name="RuleOnValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRuleOnValu925452">
+          <End Type="MyProjectModel.RuleOnValue" Role="RuleOnValue" Multiplicity="1" />
+          <End Type="MyProjectModel.RuleOnValue_Column" Role="RuleOnValue_Column" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RuleOnValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleOnValue_Column">
+              <PropertyRef Name="RuleOnValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSubUnionTo235113">
+          <End Type="MyProjectModel.UnionRelationshipType" Role="UnionRelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.SubUnionToUnionRelationshipType" Role="SubUnionToUnionRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionRelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubUnionToUnionRelationshipType">
+              <PropertyRef Name="UnionRelationshipTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTableDrive311898">
+          <End Type="MyProjectModel.Table" Role="Table" Multiplicity="1" />
+          <End Type="MyProjectModel.TableDrivedEntity" Role="TableDrivedEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TableDrivedEntity">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUniqueCons110156">
+          <End Type="MyProjectModel.Table" Role="Table" Multiplicity="1" />
+          <End Type="MyProjectModel.UniqueConstraint" Role="UniqueConstraint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UniqueConstraint">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUnionToSub933310">
+          <End Type="MyProjectModel.UnionRelationshipType" Role="UnionRelationshipType" Multiplicity="1" />
+          <End Type="MyProjectModel.UnionToSubUnionRelationshipType" Role="UnionToSubUnionRelationshipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionRelationshipType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnionToSubUnionRelationshipType">
+              <PropertyRef Name="UnionRelationshipTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TableDrivedEntity_Columns">
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="*" />
+          <End Type="MyProjectModel.TableDrivedEntity" Role="TableDrivedEntity" Multiplicity="*" />
+        </Association>
+        <Association Name="UniqueConstraint_Column">
+          <End Type="MyProjectModel.UniqueConstraint" Role="UniqueConstraint" Multiplicity="*" />
+          <End Type="MyProjectModel.Column" Role="Column" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyProjectModelStoreContainer" CdmEntityContainer="MyProjectEntities">
+          <EntitySetMapping Name="ArcRelationshipGroup">
+            <EntityTypeMapping TypeName="MyProjectModel.ArcRelationshipGroup">
+              <MappingFragment StoreEntitySet="ArcRelationshipGroup">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="TableDrivedEntityID" ColumnName="TableDrivedEntityID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArcRelationshipGroup_Relationship">
+            <EntityTypeMapping TypeName="MyProjectModel.ArcRelationshipGroup_Relationship">
+              <MappingFragment StoreEntitySet="ArcRelationshipGroup_Relationship">
+                <ScalarProperty Name="Dummy" ColumnName="Dummy" />
+                <ScalarProperty Name="Dummy2" ColumnName="Dummy2" />
+                <ScalarProperty Name="ArcRelationshipGroupID" ColumnName="ArcRelationshipGroupID" />
+                <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Column">
+            <EntityTypeMapping TypeName="MyProjectModel.Column">
+              <MappingFragment StoreEntitySet="Column">
+                <ScalarProperty Name="ViewEnabled" ColumnName="ViewEnabled" />
+                <ScalarProperty Name="SearchEnabled" ColumnName="SearchEnabled" />
+                <ScalarProperty Name="DataEntryEnabled" ColumnName="DataEntryEnabled" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="IsMandatory" ColumnName="IsMandatory" />
+                <ScalarProperty Name="IsNull" ColumnName="IsNull" />
+                <ScalarProperty Name="IsIdentity" ColumnName="IsIdentity" />
+                <ScalarProperty Name="PrimaryKey" ColumnName="PrimaryKey" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Column_Tag">
+            <EntityTypeMapping TypeName="MyProjectModel.Column_Tag">
+              <MappingFragment StoreEntitySet="Column_Tag">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ColumnKeyValue">
+            <EntityTypeMapping TypeName="MyProjectModel.ColumnKeyValue">
+              <MappingFragment StoreEntitySet="ColumnKeyValue">
+                <ScalarProperty Name="ValueFromKeyOrValue" ColumnName="ValueFromKeyOrValue" />
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ColumnKeyValueRange">
+            <EntityTypeMapping TypeName="MyProjectModel.ColumnKeyValueRange">
+              <MappingFragment StoreEntitySet="ColumnKeyValueRange">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="KeyTitle" ColumnName="KeyTitle" />
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseInformation">
+            <EntityTypeMapping TypeName="MyProjectModel.DatabaseInformation">
+              <MappingFragment StoreEntitySet="DatabaseInformation">
+                <ScalarProperty Name="ConnectionString" ColumnName="ConnectionString" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DateColumnType">
+            <EntityTypeMapping TypeName="MyProjectModel.DateColumnType">
+              <MappingFragment StoreEntitySet="DateColumnType">
+                <ScalarProperty Name="IsPersianDate" ColumnName="IsPersianDate" />
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entity_Tag">
+            <EntityTypeMapping TypeName="MyProjectModel.Entity_Tag">
+              <MappingFragment StoreEntitySet="Entity_Tag">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="TableDrivedEntityID" ColumnName="TableDrivedEntityID" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExplicitOneToOneRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.ExplicitOneToOneRelationshipType">
+              <MappingFragment StoreEntitySet="ExplicitOneToOneRelationshipType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImplicitOneToOneRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.ImplicitOneToOneRelationshipType">
+              <MappingFragment StoreEntitySet="ImplicitOneToOneRelationshipType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ISARelationship">
+            <EntityTypeMapping TypeName="MyProjectModel.ISARelationship">
+              <MappingFragment StoreEntitySet="ISARelationship">
+                <ScalarProperty Name="IsDisjoint" ColumnName="IsDisjoint" />
+                <ScalarProperty Name="IsTolatParticipation" ColumnName="IsTolatParticipation" />
+                <ScalarProperty Name="IsSpecialization" ColumnName="IsSpecialization" />
+                <ScalarProperty Name="IsGeneralization" ColumnName="IsGeneralization" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManyToManyRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.ManyToManyRelationshipType">
+              <MappingFragment StoreEntitySet="ManyToManyRelationshipType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManyToOneRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.ManyToOneRelationshipType">
+              <MappingFragment StoreEntitySet="ManyToOneRelationshipType">
+                <ScalarProperty Name="ManyToManyRelationshipTypeID" ColumnName="ManyToManyRelationshipTypeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NumericColumnType">
+            <EntityTypeMapping TypeName="MyProjectModel.NumericColumnType">
+              <MappingFragment StoreEntitySet="NumericColumnType">
+                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+                <ScalarProperty Name="Scale" ColumnName="Scale" />
+                <ScalarProperty Name="Precision" ColumnName="Precision" />
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OneToManyRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.OneToManyRelationshipType">
+              <MappingFragment StoreEntitySet="OneToManyRelationshipType">
+                <ScalarProperty Name="ManySideCount" ColumnName="ManySideCount" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MasterDetailState" ColumnName="MasterDetailState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Relationship">
+            <EntityTypeMapping TypeName="MyProjectModel.Relationship">
+              <MappingFragment StoreEntitySet="Relationship">
+                <ScalarProperty Name="TableDrivedEntityID2" ColumnName="TableDrivedEntityID2" />
+                <ScalarProperty Name="TableDrivedEntityID1" ColumnName="TableDrivedEntityID1" />
+                <ScalarProperty Name="SecondSideTableID" ColumnName="SecondSideTableID" />
+                <ScalarProperty Name="FirstSideTableID" ColumnName="FirstSideTableID" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ViewEnabled" ColumnName="ViewEnabled" />
+                <ScalarProperty Name="SearchEnabled" ColumnName="SearchEnabled" />
+                <ScalarProperty Name="DataEntryEnabled" ColumnName="DataEntryEnabled" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelationshipColumns">
+            <EntityTypeMapping TypeName="MyProjectModel.RelationshipColumns">
+              <MappingFragment StoreEntitySet="RelationshipColumns">
+                <ScalarProperty Name="SecondSideColumnID" ColumnName="SecondSideColumnID" />
+                <ScalarProperty Name="FirstSideColumnID" ColumnName="FirstSideColumnID" />
+                <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.RelationshipType">
+              <MappingFragment StoreEntitySet="RelationshipType">
+                <ScalarProperty Name="IsOtherSideDirectlyCreatable" ColumnName="IsOtherSideDirectlyCreatable" />
+                <ScalarProperty Name="IsOtherSideCreatable" ColumnName="IsOtherSideCreatable" />
+                <ScalarProperty Name="IsOtherSideTransferable" ColumnName="IsOtherSideTransferable" />
+                <ScalarProperty Name="IsOtherSideMandatory" ColumnName="IsOtherSideMandatory" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RuleOnValue">
+            <EntityTypeMapping TypeName="MyProjectModel.RuleOnValue">
+              <MappingFragment StoreEntitySet="RuleOnValue">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RuleOnValue_Column">
+            <EntityTypeMapping TypeName="MyProjectModel.RuleOnValue_Column">
+              <MappingFragment StoreEntitySet="RuleOnValue_Column">
+                <ScalarProperty Name="ValidValue" ColumnName="ValidValue" />
+                <ScalarProperty Name="RuleOnValueID" ColumnName="RuleOnValueID" />
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RuleOnValue_Relationship">
+            <EntityTypeMapping TypeName="MyProjectModel.RuleOnValue_Relationship">
+              <MappingFragment StoreEntitySet="RuleOnValue_Relationship">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="RuleOnValueID" ColumnName="RuleOnValueID" />
+                <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StringColumnType">
+            <EntityTypeMapping TypeName="MyProjectModel.StringColumnType">
+              <MappingFragment StoreEntitySet="StringColumnType">
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="MaxLength" ColumnName="MaxLength" />
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubToSuperRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.SubToSuperRelationshipType">
+              <MappingFragment StoreEntitySet="SubToSuperRelationshipType">
+                <ScalarProperty Name="Dummy" ColumnName="Dummy" />
+                <ScalarProperty Name="ISARelationshipID" ColumnName="ISARelationshipID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubUnionToUnionRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.SubUnionToUnionRelationshipType">
+              <MappingFragment StoreEntitySet="SubUnionToUnionRelationshipType">
+                <ScalarProperty Name="Dummy" ColumnName="Dummy" />
+                <ScalarProperty Name="UnionRelationshipTypeID" ColumnName="UnionRelationshipTypeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SuperToSubRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.SuperToSubRelationshipType">
+              <MappingFragment StoreEntitySet="SuperToSubRelationshipType">
+                <ScalarProperty Name="Dummy" ColumnName="Dummy" />
+                <ScalarProperty Name="ISARelationshipID" ColumnName="ISARelationshipID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table">
+            <EntityTypeMapping TypeName="MyProjectModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="IsInheritanceImplementation" ColumnName="IsInheritanceImplementation" />
+                <ScalarProperty Name="IsAssociative" ColumnName="IsAssociative" />
+                <ScalarProperty Name="IsStructurReferencee" ColumnName="IsStructurReferencee" />
+                <ScalarProperty Name="IsDataReference" ColumnName="IsDataReference" />
+                <ScalarProperty Name="BatchDataEntry" ColumnName="BatchDataEntry" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Catalog" ColumnName="Catalog" />
+                <ScalarProperty Name="RelatedSchema" ColumnName="RelatedSchema" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableDrivedEntity">
+            <EntityTypeMapping TypeName="MyProjectModel.TableDrivedEntity">
+              <MappingFragment StoreEntitySet="TableDrivedEntity">
+                <ScalarProperty Name="IsAssociative" ColumnName="IsAssociative" />
+                <ScalarProperty Name="IsStructurReferencee" ColumnName="IsStructurReferencee" />
+                <ScalarProperty Name="IsDataReference" ColumnName="IsDataReference" />
+                <ScalarProperty Name="BatchDataEntry" ColumnName="BatchDataEntry" />
+                <ScalarProperty Name="IndependentDataEntry" ColumnName="IndependentDataEntry" />
+                <ScalarProperty Name="Criteria" ColumnName="Criteria" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tag">
+            <EntityTypeMapping TypeName="MyProjectModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnionRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.UnionRelationshipType">
+              <MappingFragment StoreEntitySet="UnionRelationshipType">
+                <ScalarProperty Name="UnionHoldsKeys" ColumnName="UnionHoldsKeys" />
+                <ScalarProperty Name="IsTolatParticipation" ColumnName="IsTolatParticipation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnionToSubUnionRelationshipType">
+            <EntityTypeMapping TypeName="MyProjectModel.UnionToSubUnionRelationshipType">
+              <MappingFragment StoreEntitySet="UnionToSubUnionRelationshipType">
+                <ScalarProperty Name="Dummy" ColumnName="Dummy" />
+                <ScalarProperty Name="UnionRelationshipTypeID" ColumnName="UnionRelationshipTypeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UniqueConstraint">
+            <EntityTypeMapping TypeName="MyProjectModel.UniqueConstraint">
+              <MappingFragment StoreEntitySet="UniqueConstraint">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TableDrivedEntity_Columns" TypeName="MyProjectModel.TableDrivedEntity_Columns" StoreEntitySet="TableDrivedEntity_Columns">
+            <EndProperty Name="TableDrivedEntity">
+              <ScalarProperty Name="ID" ColumnName="TableDrivedEntityID" />
+            </EndProperty>
+            <EndProperty Name="Column">
+              <ScalarProperty Name="ID" ColumnName="ColumnID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UniqueConstraint_Column" TypeName="MyProjectModel.UniqueConstraint_Column" StoreEntitySet="UniqueConstraint_Column">
+            <EndProperty Name="Column">
+              <ScalarProperty Name="ID" ColumnName="ColumnID" />
+            </EndProperty>
+            <EndProperty Name="UniqueConstraint">
+              <ScalarProperty Name="ID" ColumnName="UniqueConstraintID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
